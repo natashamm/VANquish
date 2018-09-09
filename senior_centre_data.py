@@ -26,7 +26,7 @@ def distance_lat_lon(lat1, lon1, lat2, lon2):
     return 12742 * asin(sqrt(a))
 
 
-def closest(data, point_row):
+def closest(data, point_row, field):
     p_lon = point_row['LONG']
     p_lat = point_row['LAT']
     min_distance = 100000
@@ -37,11 +37,11 @@ def closest(data, point_row):
             min_distance = dist
             idx = 0
     closest_row = vgh_df.iloc[idx]
-    print("Done")
-    return closest_row['minor.prob']
+    return closest_row['severe.prob']
     
 
 
 #-----------
     
-senior_df['minor.prob'] = senior_df.apply(lambda row: closest(vgh_df, row),axis=1)
+senior_df['minor.prob'] = senior_df.apply(lambda row: closest(vgh_df, row, 'minor.prob'),axis=1)
+senior_df['severe.prob'] = senior_df.apply(lambda row: closest(vgh_df, row, 'severe.prob'),axis=1)
