@@ -3,7 +3,7 @@
 Data, code and visualization tool used.
 
 
-[VANquish\ Hackathon.R](https://github.com/natashamm/VANquish/blob/master/VANquish%20Hackathon.R) - implemented machine learning algorithms
+[VANquish Hackathon.R](https://github.com/natashamm/VANquish/blob/master/VANquish%20Hackathon.R) - implemented machine learning algorithms
 
 [data_processing.py](https://github.com/natashamm/VANquish/blob/master/data_processing.py) - used to add new variables to original VGH collisions data set
 
