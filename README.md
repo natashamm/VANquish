@@ -10,3 +10,5 @@ Data, code and visualization tool used.
 [VGH_2008-2017.csv](https://github.com/natashamm/VANquish/blob/master/VGH_2008-2017.csv) - data used
 
 [VGH_2008.2017.final.csv](https://github.com/natashamm/VANquish/blob/master/VGH_2008.2017.final.csv) - results
+
+Tableau visualization can be viewed here: https://public.tableau.com/profile/shiner.yang#!/vizhome/VANquishHackathonFinal/Dashboard1?publish=yes
