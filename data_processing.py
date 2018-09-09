@@ -6,10 +6,6 @@ Created on Fri Sep  7 22:19:04 2018
 @author: Natasha
 """
 
-#import json
-#from shapely.geometry import shape, Point
-#import utm
-
 import pandas as pd
 import datetime
 from geopy import distance
@@ -17,13 +13,8 @@ import fiona
 import shapely
 import utm
 
-
-
 #load data for classification ----------------
-vgh_time_df = pd.read_excel("/Users/Natasha/Downloads/Collision Data_Detailed collision data_VGH Injury Data_VGH 2008-2017.xlsx" , index_col = 0).dropna()
 vgh_df = pd.read_csv("/Users/Natasha/Desktop/VANquish/collision/VGH_2008-2017.csv", index_col=0)
-#pd.read_excel("/Users/Natasha/Desktop/VANquish/collision/VGH_2008-2017.xlsx", index_col=0)
-vgh_df['Collision Time Range'] = vgh_time_df['Collision Time Range']
 
 weather_df = pd.read_excel("/Users/Natasha/Desktop/VANquish/Historic_Weather_Lighting2006-2017.xlsx", index_col=0)
 
@@ -46,7 +37,7 @@ def single_date(row):
         return str(row['Year']) + "-" + str(row['Month']) + "-" + str(row['Day'])
     
 
-#for a given time range and date, give the specified weather conditions
+#for a given row with a time range and date, give the specified weather conditions
 def weather_cond(row, weather):
     date = row['Collision Date']
     time_range_str = str(row['Collision Time Range'])
@@ -73,7 +64,7 @@ def weather_cond(row, weather):
         
     return weather_value
 
-#for a given accident, get the number of traffic signals in the given radius
+#for a given accident row, get the number of traffic signals in the given radius
 def count_traff_sig(row, rad):
     count = 0
     accident_coords = (row['Latitude'], row['Longitude'])
@@ -125,11 +116,10 @@ radius = 0.25
 
 vgh_df['Traffic Signals Count'] = vgh_df.apply(lambda row: count_traff_sig (row, radius),axis=1)
 
-vgh_df.to_csv("/Users/Natasha/Desktop/VANquish/VGH_2008-2017.csv", index=False)
 #new variables: bike lane ------
 
 vgh_df['Bike Lane'] = vgh_df.apply(lambda row: bike_path (row),axis=1)
 
-
-     
+#save --------------
+vgh_df.to_csv("/Users/Natasha/Desktop/VANquish/VGH_2008-2017.csv", index=False)
 
